@@ -1,2 +1,2 @@
 # kotlin_flow_learning
-Understanding flows besic to advance and practice. 
+Understanding flows basic to advance and practice. 
