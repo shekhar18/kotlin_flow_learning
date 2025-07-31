@@ -38,5 +38,14 @@ fun main() {
             println(it)
         }
 
+
+        val flowOperators = FlowOperators()
+        val flowOperatorsProducer = flowOperators.useOperators()
+
+        flowOperatorsProducer.collect {
+            delay(1000)
+            println("$it")
+        }
+
     }
 }
