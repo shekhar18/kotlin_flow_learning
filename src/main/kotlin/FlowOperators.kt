@@ -1,5 +1,6 @@
 package org.example
 
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.filter
@@ -55,6 +56,10 @@ class FlowOperators {
             .filter { it % 2 == 0 }
             .map { it * it }
 
+    }
+
+    fun flowCancellation():Flow<Int>{
+        return (1..100).asFlow()
     }
 
 

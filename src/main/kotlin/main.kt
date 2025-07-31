@@ -1,6 +1,10 @@
 package org.example
 
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.cancellable
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.runBlocking
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -41,10 +45,20 @@ fun main() {
 
         val flowOperators = FlowOperators()
         val flowOperatorsProducer = flowOperators.useOperators()
+        val cancelableProducer = flowOperators.flowCancellation()
 
         flowOperatorsProducer.collect {
             delay(1000)
             println("$it")
+        }
+        cancelableProducer.cancellable()
+            .catch { println("${it.message}") }
+            .onCompletion { println("this is get completed") }.collect {
+            if (it == 10) {
+                println("now this flow will cancel")
+                cancel()
+            }
+            println(it)
         }
 
     }
