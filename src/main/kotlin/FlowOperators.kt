@@ -19,6 +19,7 @@ class FlowOperators {
             flatMapConcat – Flattens flows sequentially.
             flatMapMerge – Flattens flows concurrently.
             flatMapLatest – Cancels previous flow and switches to the latest.
+            *
         🔹 Filtering
             filter – Emits only values that match the condition.
             filterNot – Emits values that do not match the condition.
@@ -27,13 +28,16 @@ class FlowOperators {
             drop(n) – Skips the first n values.
             debounce(time) – Emits the last value after a timeout of no new values.
             sample(time) – Emits the latest value at regular intervals.
+            *
         🔹 Combining
             combine – Combines latest values from multiple flows.
             zip – Pairs values from two flows by index.
             merge – Emits values from multiple flows concurrently.
+            *
         🔹 Control
             onEach – Perform an action (e.g., logging) on each emission.
             transform – Fully custom transformation and emission logic.
+            *
        Terminal Operators
             collect – Collects the emitted values (starts the flow).
             first – Returns the first emitted value.
