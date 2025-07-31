@@ -46,7 +46,8 @@ class FlowOperators {
 
 
     fun useOperators(): Flow<Int> {
-        return (1..10).asFlow().onEach { println("before collecting i will do operation on item : $it") }
+        return (1..10).asFlow()
+            .onEach { println("before collecting we will operate it. : $it") }
             .filter { it % 2 == 0 }
             .map { it * it }
 
