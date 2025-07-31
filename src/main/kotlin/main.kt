@@ -22,6 +22,7 @@ fun main() {
         val flowBuilders = FlowBuilders()
         val fruitProducer = flowBuilders.convertListToTheFlow()
         val nameProvider = flowBuilders.getFlowHere()
+        val cannelProducer = flowBuilders.channelFlow()
 
         fruitProducer.collect {
             delay(1000)
@@ -29,6 +30,11 @@ fun main() {
         }
         nameProvider.collect {
             delay(1000)
+            println(it)
+        }
+
+        cannelProducer.collect {
+            delay(2000)
             println(it)
         }
 
