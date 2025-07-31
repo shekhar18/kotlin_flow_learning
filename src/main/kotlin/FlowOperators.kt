@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.onEach
 
 class FlowOperators {
 
-    //in this example we see the multiple operator
+    //in this example, we see the multiple operator
     /*
     * 1.Intermediate Operators =>map, filter, take, onEach, transform, reduce, fold
     * 2.Terminal Operators => collect, toList, first, last, single, debounce
