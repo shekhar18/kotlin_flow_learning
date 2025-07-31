@@ -1,5 +1,6 @@
 package org.example
 
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -16,5 +17,20 @@ fun main() {
         producer.collect {
             println("Collect value : ${it}")
         }
+
+        //here we use the flow builder to create flow
+        val flowBuilders = FlowBuilders()
+        val fruitProducer = flowBuilders.convertListToTheFlow()
+        val nameProvider = flowBuilders.getFlowHere()
+
+        fruitProducer.collect {
+            delay(1000)
+            println(it)
+        }
+        nameProvider.collect {
+            delay(1000)
+            println(it)
+        }
+
     }
 }
