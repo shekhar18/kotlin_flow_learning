@@ -29,9 +29,11 @@ fun main() {
                 println("Collect value : ${it}")
             }
 
-
+            //here we creating the object of the HotFlow class and call there internal methods
             val obj = HotFlow()
+            //from HotFlow class we get the sharedFlow object.
             val hotflow = obj.creatingHotFlow()
+            //calling the collect method and collect values
             launch {
                 //obj.collectHotFlow("shekhar")
                 hotflow.collect {
@@ -45,6 +47,7 @@ fun main() {
                     hotflow.emit(it)
                 }
             }
+            // after 10sec create new collector and start collecting value, so we add new collector and collect value
             delay(10000)
             launch {
                 obj.collectHotFlow("Shivpriya")

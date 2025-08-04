@@ -5,20 +5,21 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 
 class HotFlow {
-    val hotFlow = MutableSharedFlow<Int>(replay = 1)
+    private val _hotFlow = MutableSharedFlow<Int>(replay = 1)
+    val hotFlow = _hotFlow
+    //here we're passing hotflow object to another place to collect value
     fun creatingHotFlow(): MutableSharedFlow<Int> {
         return hotFlow
     }
 
     suspend fun flowEmit(emitValue: Int) {
-        hotFlow.emit(emitValue)
+        _hotFlow.emit(emitValue)
     }
 
-
     suspend fun collectHotFlow(collectorName:String){
-
         hotFlow.collect {
             println("$collectorName collect value : $it")
         }
     }
+
 }
